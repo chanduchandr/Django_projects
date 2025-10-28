@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'commonapp',
     'users',
     'dropdownset',
+    'customer',
+    'customerjobcard',
     'propertyapp'
 
 ]
