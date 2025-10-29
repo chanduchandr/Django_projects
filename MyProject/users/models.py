@@ -9,6 +9,7 @@ class Users(Common):
     FirstName = models.CharField(max_length=50)
     LastName = models.CharField(max_length=50)
     PhoneNumber = models.CharField(max_length=20)
+    Email = models.EmailField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.Id}"

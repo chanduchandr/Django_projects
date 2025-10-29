@@ -16,3 +16,6 @@ class JobCard(Common):
     StatusID = models.BigIntegerField(null=True, blank=True)
     RoleID = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, blank=True)
     RegionID = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True)
+    
+    def __str__(self):
+        return f"JobCard {self.Id} - {self.CustomerID}"

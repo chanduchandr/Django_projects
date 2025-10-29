@@ -1,0 +1,30 @@
+<h2>Job Cards</h2>
+<a href="{%url 'create_jobcard' %}">Create JobCard</a>
+
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>ID</th>
+        <th>Property</th>
+        <th>Customer</th>
+        <th>Role</th>
+        <th>Region</th>
+        <th>StatusID</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for jc in jobcards %}
+    <tr>
+        <td>{{ jc.id }}</td>
+        <td>{{ jc.PropertieID }}</td>
+        <td>{{ jc.CustomerID }}</td>
+        <td>{{ jc.RoleID }}</td>
+        <td>{{ jc.RegionID }}</td>
+        <td>{{ jc.StatusID }}</td>
+        <td>
+            <a href="{% url 'update_jobcard' jc.Id %}">Edit</a> |
+            <a href="{% url 'delete_jobcard' jc.Id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

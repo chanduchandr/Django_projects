@@ -1,0 +1,10 @@
+<h3>Are you sure you want to delete the jobcard?</h3>
+
+<p>{{ jobcard }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+</form>
+<a href="{% url 'jobcard_list' %}">Cancel</a>
+

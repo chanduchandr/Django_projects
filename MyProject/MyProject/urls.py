@@ -16,8 +16,26 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from customerjobcard import views
+from users.views import UserViewSet, RoleViewSet, UserRoleMapViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'roles', RoleViewSet)
+router.register(r'userrolemaps', UserRoleMapViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('jobcards/', include([
+        path('', views.jobcard_list, name='jobcard_list'),
+        path('create/', views.create_jobcard, name='create_jobcard'),
+        path('update/<uuid:pk>/', views.update_jobcard, name='update_jobcard'),
+        path('delete/<uuid:pk>/', views.delete_jobcard, name='delete_jobcard'),
+    ])),
+
+    # Optional: redirect / to /jobcards/
+    path('', views.jobcard_list, name='home'),
+    path('api/', include(router.urls)),
 ]
